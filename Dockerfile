@@ -1,9 +1,12 @@
-FROM python:3.7-slim
+FROM python:3.12-slim
 
-WORKDIR /botname
+WORKDIR /app
 
-COPY requirements.txt /botname/
-RUN pip install -r /botname/requirements.txt
-COPY . /botname/
+COPY pyproject.toml ./
+RUN pip install --no-cache-dir .
 
-CMD python3 /botname/bot.py
+COPY . .
+
+RUN mkdir -p data
+
+CMD ["python", "-m", "app.main"]
