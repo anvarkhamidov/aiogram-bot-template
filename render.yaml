@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: food-delivery-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install .
+    startCommand: python start.py
+    envVars:
+      - key: BOT_BOT_TOKEN
+        sync: false
+      - key: BOT_DATABASE_URL
+        value: sqlite+aiosqlite:///data/food_delivery.db
+      - key: BOT_WEBAPP_BASE_URL
+        sync: false
+      - key: BOT_WEBAPP_HOST
+        value: "0.0.0.0"
+      - key: BOT_WEBAPP_PORT
+        value: "10000"
+      - key: BOT_ADMIN_IDS
+        sync: false
+    disk:
+      name: bot-data
+      mountPath: /data
+      sizeGB: 1

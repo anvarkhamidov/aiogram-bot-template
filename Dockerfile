@@ -9,4 +9,4 @@ COPY . .
 
 RUN mkdir -p data
 
-CMD ["python", "-m", "app.main"]
+CMD ["python", "start.py"]

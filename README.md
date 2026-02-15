@@ -2,6 +2,8 @@
 
 Telegram WebApp bot for ordering food from restaurants.
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/anvarkhamidov/aiogram-bot-template)
+
 ## Features
 
 - Browse restaurants, categories, and dishes
@@ -11,7 +13,22 @@ Telegram WebApp bot for ordering food from restaurants.
 - Admin panel for order management
 - Full test suite (80 tests)
 
-## Quick Start
+## Deploy for Free (Render.com)
+
+The fastest way to get the bot running:
+
+1. Fork this repo on GitHub
+2. Go to [render.com](https://render.com) and sign up (free)
+3. Click **New > Blueprint** and connect your forked repo
+4. Set environment variables:
+   - `BOT_BOT_TOKEN` — your token from [@BotFather](https://t.me/BotFather)
+   - `BOT_WEBAPP_BASE_URL` — will be `https://food-delivery-bot.onrender.com` (your Render URL)
+   - `BOT_ADMIN_IDS` — your Telegram user ID, e.g. `[123456789]`
+5. Click **Deploy** — done!
+
+The bot will auto-seed sample restaurants on first launch.
+
+## Quick Start (Local)
 
 ### 1. Get a Bot Token
 
@@ -33,7 +50,7 @@ pip install -e ".[dev]"
 ### 4. Run the bot
 
 ```bash
-python -m app.main
+python start.py
 ```
 
 Or run just the WebApp demo server with sample data:
@@ -42,10 +59,6 @@ Or run just the WebApp demo server with sample data:
 python dev_server.py
 # Open http://localhost:8080/webapp
 ```
-
-### 5. Seed sample data
-
-In Telegram, send `/seed` to your bot (you must be in the `BOT_ADMIN_IDS` list).
 
 ## Docker
 
@@ -93,5 +106,3 @@ tests/            # 80 tests (models, services, keyboards, webapp, middleware)
 ## WebApp (Mini App)
 
 The Mini App provides a rich mobile UI for browsing restaurants, viewing menus, managing cart, and placing orders. It uses Telegram theme variables for native look and feel.
-
-To use the Mini App, set `BOT_WEBAPP_BASE_URL` to your public HTTPS domain where the bot is hosted.
