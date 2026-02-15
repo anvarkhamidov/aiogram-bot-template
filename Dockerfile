@@ -9,4 +9,6 @@ COPY . .
 
 RUN mkdir -p data
 
+EXPOSE ${PORT:-8000}
+
 CMD ["python", "start.py"]
