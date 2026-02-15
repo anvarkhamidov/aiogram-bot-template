@@ -9,7 +9,7 @@ services:
       - key: BOT_BOT_TOKEN
         sync: false
       - key: BOT_DATABASE_URL
-        value: sqlite+aiosqlite:///tmp/food_delivery.db
+        value: sqlite+aiosqlite:////tmp/food_delivery.db
       - key: BOT_WEBAPP_BASE_URL
         sync: false
       - key: BOT_WEBAPP_HOST
