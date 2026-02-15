@@ -134,7 +134,9 @@ async def cmd_seed(message: Message, session: AsyncSession) -> None:
     cat5 = await service.create_category("Burgers", r3.id)
     cat6 = await service.create_category("Sides", r3.id)
 
-    await service.create_product("Classic Burger", 999, cat5.id, "Beef patty with lettuce and tomato")
+    await service.create_product(
+        "Classic Burger", 999, cat5.id, "Beef patty with lettuce and tomato"
+    )
     await service.create_product("Cheese Burger", 1099, cat5.id, "With cheddar cheese")
     await service.create_product("Bacon Burger", 1299, cat5.id, "Crispy bacon and BBQ sauce")
     await service.create_product("French Fries", 399, cat6.id, "Crispy golden fries")
@@ -142,5 +144,5 @@ async def cmd_seed(message: Message, session: AsyncSession) -> None:
 
     await message.answer(
         "Sample data loaded!\n"
-        f"  3 restaurants, multiple categories and products created."
+        "  3 restaurants, multiple categories and products created."
     )

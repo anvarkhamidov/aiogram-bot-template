@@ -105,7 +105,7 @@ def cart_keyboard(cart_items) -> InlineKeyboardMarkup:
         buttons.append([
             InlineKeyboardButton(
                 text=f"- {item.product.name} x{item.quantity} ({item.product.price_display}$)",
-                callback_data=f"noop",
+                callback_data="noop",
             ),
             InlineKeyboardButton(
                 text="X",

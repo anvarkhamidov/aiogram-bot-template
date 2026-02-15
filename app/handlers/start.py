@@ -3,8 +3,8 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.keyboards.webapp import webapp_menu_keyboard
 from app.config import settings
+from app.keyboards.webapp import webapp_menu_keyboard
 from app.services.user import UserService
 
 router = Router()

@@ -1,8 +1,6 @@
-import json
-
 import pytest
 from aiohttp import web
-from aiohttp.test_utils import AioHTTPTestCase, TestClient, TestServer
+from aiohttp.test_utils import TestClient, TestServer
 
 from app.models.category import Category
 from app.models.product import Product
