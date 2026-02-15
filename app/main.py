@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 
 from aiohttp import web
 
@@ -58,9 +59,10 @@ async def main() -> None:
 
     runner = web.AppRunner(webapp_app)
     await runner.setup()
-    site = web.TCPSite(runner, settings.webapp_host, settings.webapp_port)
+    port = int(os.environ.get("PORT", settings.webapp_port))
+    site = web.TCPSite(runner, settings.webapp_host, port)
     await site.start()
-    logger.info("WebApp server started on %s:%s", settings.webapp_host, settings.webapp_port)
+    logger.info("WebApp server started on %s:%s", settings.webapp_host, port)
 
     try:
         await dp.start_polling(bot)

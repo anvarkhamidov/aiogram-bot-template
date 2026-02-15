@@ -48,6 +48,10 @@ def create_webapp_routes(session_factory: async_sessionmaker[AsyncSession], bot_
             return parsed["user"].get("id")
         return None
 
+    @routes.get("/")
+    async def health(request: web.Request) -> web.Response:
+        return web.json_response({"status": "ok"})
+
     @routes.get("/api/restaurants")
     async def get_restaurants(request: web.Request) -> web.Response:
         async with session_factory() as session:
