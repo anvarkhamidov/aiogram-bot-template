@@ -1,3 +1,6 @@
+import json
+
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -10,6 +13,18 @@ class Settings(BaseSettings):
     admin_ids: list[int] = []
     webhook_path: str = "/webhook"
     webhook_secret: str = ""
+
+    @field_validator("admin_ids", mode="before")
+    @classmethod
+    def parse_admin_ids(cls, v):
+        if isinstance(v, str):
+            v = v.strip()
+            if v.startswith("["):
+                return json.loads(v)
+            return [int(x.strip()) for x in v.split(",") if x.strip()]
+        if isinstance(v, int):
+            return [v]
+        return v
 
     model_config = {"env_prefix": "BOT_", "env_file": ".env"}
 
